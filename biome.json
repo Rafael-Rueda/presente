@@ -1,0 +1,9 @@
+{
+    "$schema": "https://biomejs.dev/schemas/4.2.0/schema.json",
+    "extends": ["@rueda.dev/config/biome"],
+    "vcs": {
+        "enabled": true,
+        "clientKind": "git",
+        "useIgnoreFile": false
+    }
+}

@@ -1,0 +1,174 @@
+### Health Check
+GET http://localhost:3333/health
+
+###
+
+### 1. Create User (Signup)
+POST http://localhost:3333/users
+Content-Type: application/json
+
+{
+    "name": "John Doe",
+    "email": "john@example.com",
+    "password": "password123"
+}
+
+###
+
+### 2. Authenticate / Login
+# @name login
+POST http://localhost:3333/sessions
+Content-Type: application/json
+
+{
+    "email": "john@example.com",
+    "password": "password123"
+}
+
+###
+
+### Test: Login with Invalid Credentials (should return 401)
+POST http://localhost:3333/sessions
+Content-Type: application/json
+
+{
+    "email": "john@example.com",
+    "password": "wrongpassword"
+}
+
+###
+
+### Test: Login with Missing Fields (should return 400)
+POST http://localhost:3333/sessions
+Content-Type: application/json
+
+{
+    "email": "john@example.com"
+}
+
+###
+
+### 3. Get All Users
+GET http://localhost:3333/users
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZjYzc1NDZkLWNlMjQtNDFkMS04Y2MxLWNlOWZjNWI4Y2E4YyIsImVtYWlsIjoiam9obkBleGFtcGxlLmNvbSIsImlhdCI6MTc2MTk1MzMyMiwiZXhwIjoxNzYxOTU0MjIyfQ._CElHUGA_Rf8W-2zg6vVbDty2WAGIvbOHdo-WY_AXCI
+
+###
+
+### Get User By ID
+GET http://localhost:3333/users/USER_ID
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZjYzc1NDZkLWNlMjQtNDFkMS04Y2MxLWNlOWZjNWI4Y2E4YyIsImVtYWlsIjoiam9obkBleGFtcGxlLmNvbSIsImlhdCI6MTc2MTk1MzMyMiwiZXhwIjoxNzYxOTU0MjIyfQ._CElHUGA_Rf8W-2zg6vVbDty2WAGIvbOHdo-WY_AXCI
+
+###
+
+### Update User
+PATCH http://localhost:3333/users/USER_ID
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZjYzc1NDZkLWNlMjQtNDFkMS04Y2MxLWNlOWZjNWI4Y2E4YyIsImVtYWlsIjoiam9obkBleGFtcGxlLmNvbSIsImlhdCI6MTc2MTk1MzMyMiwiZXhwIjoxNzYxOTU0MjIyfQ._CElHUGA_Rf8W-2zg6vVbDty2WAGIvbOHdo-WY_AXCI
+
+{
+    "name": "John Doe Updated"
+}
+
+###
+
+### Delete User
+DELETE http://localhost:3333/users/USER_ID
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZjYzc1NDZkLWNlMjQtNDFkMS04Y2MxLWNlOWZjNWI4Y2E4YyIsImVtYWlsIjoiam9obkBleGFtcGxlLmNvbSIsImlhdCI6MTc2MTk1MzMyMiwiZXhwIjoxNzYxOTU0MjIyfQ._CElHUGA_Rf8W-2zg6vVbDty2WAGIvbOHdo-WY_AXCI
+
+###
+
+### 4. Logout
+DELETE http://localhost:3333/sessions
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZjYzc1NDZkLWNlMjQtNDFkMS04Y2MxLWNlOWZjNWI4Y2E4YyIsImVtYWlsIjoiam9obkBleGFtcGxlLmNvbSIsImlhdCI6MTc2MTk1MzMyMiwiZXhwIjoxNzYxOTU0MjIyfQ._CElHUGA_Rf8W-2zg6vVbDty2WAGIvbOHdo-WY_AXCI
+
+###
+
+### Test: Access Protected Route Without Token (should return 401)
+GET http://localhost:3333/users
+Content-Type: application/json
+
+###
+
+### Test: Access Protected Route With Invalid Token (should return 401)
+GET http://localhost:3333/users
+Content-Type: application/json
+Authorization: Bearer invalid_token_here
+
+###
+
+### Create Student
+POST http://localhost:3333/students
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZjYzc1NDZkLWNlMjQtNDFkMS04Y2MxLWNlOWZjNWI4Y2E4YyIsImVtYWlsIjoiam9obkBleGFtcGxlLmNvbSIsImlhdCI6MTc2MTk1MzMyMiwiZXhwIjoxNzYxOTU0MjIyfQ._CElHUGA_Rf8W-2zg6vVbDty2WAGIvbOHdo-WY_AXCI
+
+{
+    "name": "João Silva",
+    "email": "joao@example.com"
+}
+
+###
+
+### Get All Students
+GET http://localhost:3333/students
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZjYzc1NDZkLWNlMjQtNDFkMS04Y2MxLWNlOWZjNWI4Y2E4YyIsImVtYWlsIjoiam9obkBleGFtcGxlLmNvbSIsImlhdCI6MTc2MTk1MzMyMiwiZXhwIjoxNzYxOTU0MjIyfQ._CElHUGA_Rf8W-2zg6vVbDty2WAGIvbOHdo-WY_AXCI
+
+###
+
+### Get Student By ID
+GET http://localhost:3333/students/STUDENT_ID
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZjYzc1NDZkLWNlMjQtNDFkMS04Y2MxLWNlOWZjNWI4Y2E4YyIsImVtYWlsIjoiam9obkBleGFtcGxlLmNvbSIsImlhdCI6MTc2MTk1MzMyMiwiZXhwIjoxNzYxOTU0MjIyfQ._CElHUGA_Rf8W-2zg6vVbDty2WAGIvbOHdo-WY_AXCI
+
+###
+
+### Validate Attendance (current date)
+POST http://localhost:3333/attendances/validate
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZjYzc1NDZkLWNlMjQtNDFkMS04Y2MxLWNlOWZjNWI4Y2E4YyIsImVtYWlsIjoiam9obkBleGFtcGxlLmNvbSIsImlhdCI6MTc2MTk1MzMyMiwiZXhwIjoxNzYxOTU0MjIyfQ._CElHUGA_Rf8W-2zg6vVbDty2WAGIvbOHdo-WY_AXCI
+
+{
+    "studentId": "9329b2a1-aeda-4965-8907-e7029934e211"
+}
+
+###
+
+### Validate Attendance (specific date)
+POST http://localhost:3333/attendances/validate
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZjYzc1NDZkLWNlMjQtNDFkMS04Y2MxLWNlOWZjNWI4Y2E4YyIsImVtYWlsIjoiam9obkBleGFtcGxlLmNvbSIsImlhdCI6MTc2MTk1MzMyMiwiZXhwIjoxNzYxOTU0MjIyfQ._CElHUGA_Rf8W-2zg6vVbDty2WAGIvbOHdo-WY_AXCI
+
+{
+    "studentId": "STUDENT_ID",
+    "date": "2025-10-31"
+}
+
+###
+
+### Get All Attendances
+GET http://localhost:3333/attendances
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZjYzc1NDZkLWNlMjQtNDFkMS04Y2MxLWNlOWZjNWI4Y2E4YyIsImVtYWlsIjoiam9obkBleGFtcGxlLmNvbSIsImlhdCI6MTc2MTk1MzMyMiwiZXhwIjoxNzYxOTU0MjIyfQ._CElHUGA_Rf8W-2zg6vVbDty2WAGIvbOHdo-WY_AXCI
+
+###
+
+### Get Attendances By Student
+GET http://localhost:3333/attendances/student/9329b2a1-aeda-4965-8907-e7029934e211
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZjYzc1NDZkLWNlMjQtNDFkMS04Y2MxLWNlOWZjNWI4Y2E4YyIsImVtYWlsIjoiam9obkBleGFtcGxlLmNvbSIsImlhdCI6MTc2MTk1MzMyMiwiZXhwIjoxNzYxOTU0MjIyfQ._CElHUGA_Rf8W-2zg6vVbDty2WAGIvbOHdo-WY_AXCI
+
+###
+
+### Test: Duplicate Attendance (should return 409)
+POST http://localhost:3333/attendances/validate
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZjYzc1NDZkLWNlMjQtNDFkMS04Y2MxLWNlOWZjNWI4Y2E4YyIsImVtYWlsIjoiam9obkBleGFtcGxlLmNvbSIsImlhdCI6MTc2MTk1MzMyMiwiZXhwIjoxNzYxOTU0MjIyfQ._CElHUGA_Rf8W-2zg6vVbDty2WAGIvbOHdo-WY_AXCI
+
+{
+    "studentId": "STUDENT_ID",
+    "date": "2025-10-31"
+}
