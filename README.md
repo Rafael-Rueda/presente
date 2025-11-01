@@ -383,6 +383,7 @@ docker-compose up -d
 ```bash
 # Iniciar o servidor em modo desenvolvimento
 npm run dev
+```
 
 ---
 
