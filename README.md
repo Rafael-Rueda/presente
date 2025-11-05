@@ -86,29 +86,23 @@ O workflow executa os seguintes checks:
 
 - ✅ **Build Matrix**: Testa em múltiplas versões do Node.js (18.x e 20.x)
 - ✅ **Instalação de Dependências**: Garante que todas as dependências são instaláveis
-- ✅ **Linting**: Verifica qualidade do código com Biome
-- ✅ **Formatação**: Valida formatação do código
-- ✅ **Startup Check**: Verifica se a aplicação inicia corretamente
+- ✅ **Testes**: Executa a suite de testes do projeto
 
 ### Badges
 
 [![CI](https://github.com/Rafael-Rueda/presente/actions/workflows/ci.yml/badge.svg)](https://github.com/Rafael-Rueda/presente/actions/workflows/ci.yml)
 
-### Scripts de Qualidade de Código
+### Como adicionar o CI ao seu repositório
 
+1. Faça commit e push dos arquivos:
 ```bash
-# Verificar linting
-npm run lint
-
-# Verificar formatação
-npm run format:check
-
-# Formatar código automaticamente
-npm run format
-
-# Executar testes
-npm test
+git add .github/workflows/ci.yml package.json README.md
+git commit -m "ci: add GitHub Actions CI workflow"
+git push origin main
 ```
+
+2. O workflow será executado automaticamente
+3. Veja os resultados na aba "Actions" do GitHub
 
 ---
 

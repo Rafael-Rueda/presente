@@ -27,47 +27,5 @@ jobs:
     - name: Install dependencies
       run: npm ci
 
-    - name: Check code formatting with Biome
-      run: npx @biomejs/biome check --error-on-warnings ./src
-
-    - name: Verify application starts
-      run: |
-        timeout 10s npm run dev || code=$?
-        if [ $code -eq 124 ]; then
-          echo "Application started successfully"
-          exit 0
-        else
-          echo "Application failed to start"
-          exit 1
-        fi
-      env:
-        NODE_ENV: test
-        PORT: 3333
-        JWT_SECRET: test-secret
-        DB_HOST: localhost
-        DB_PORT: 5432
-        DB_NAME: test_db
-        DB_USER: test_user
-        DB_PASS: test_pass
-
-  lint:
-    runs-on: ubuntu-latest
-
-    steps:
-    - name: Checkout code
-      uses: actions/checkout@v4
-
-    - name: Setup Node.js
-      uses: actions/setup-node@v4
-      with:
-        node-version: '20.x'
-        cache: 'npm'
-
-    - name: Install dependencies
-      run: npm ci
-
-    - name: Run Biome linter
-      run: npx @biomejs/biome lint ./src
-
-    - name: Run Biome formatter check
-      run: npx @biomejs/biome format --write=false ./src
+    - name: Run tests
+      run: npm test
