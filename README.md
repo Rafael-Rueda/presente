@@ -78,31 +78,37 @@ O sistema foi idealizado para resolver os desafios comuns no controle de presen�
 
 ## 🔄 CI/CD
 
-O projeto possui integração contínua configurada com GitHub Actions, executando automaticamente em cada push ou pull request.
+O projeto possui integração contínua configurada com GitHub Actions, executando automaticamente em cada push ou pull request nas branches `main`, `master` e `develop`.
 
 ### Pipeline de CI
 
 O workflow executa os seguintes checks:
 
 - ✅ **Build Matrix**: Testa em múltiplas versões do Node.js (18.x e 20.x)
-- ✅ **Instalação de Dependências**: Garante que todas as dependências são instaláveis
-- ✅ **Testes**: Executa a suite de testes do projeto
+- ✅ **Instalação de Dependências**: Garante que todas as dependências são instaláveis via `npm install`
+- ✅ **Testes**: Executa `npm test` (atualmente um placeholder, pronto para adicionar testes reais)
 
-### Badges
+### Badge de Status
 
 [![CI](https://github.com/Rafael-Rueda/presente/actions/workflows/ci.yml/badge.svg)](https://github.com/Rafael-Rueda/presente/actions/workflows/ci.yml)
 
-### Como adicionar o CI ao seu repositório
+### Como usar
 
-1. Faça commit e push dos arquivos:
+1. **Adicionar o CI ao repositório**:
 ```bash
 git add .github/workflows/ci.yml package.json README.md
 git commit -m "ci: add GitHub Actions CI workflow"
 git push origin main
 ```
 
-2. O workflow será executado automaticamente
-3. Veja os resultados na aba "Actions" do GitHub
+2. **Visualizar resultados**: Acesse a aba "Actions" no GitHub para ver os resultados do CI
+
+3. **Adicionar testes**: Para adicionar testes reais, modifique o script `test` no `package.json`:
+```json
+"scripts": {
+  "test": "jest" // ou outro framework de testes
+}
+```
 
 ---
 

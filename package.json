@@ -5,11 +5,8 @@
     "main": "src/index.js",
     "type": "module",
     "scripts": {
-        "test": "echo \"No tests yet\" && exit 0",
-        "dev": "dotenv --env-file=.env -- node src/index.js",
-        "lint": "npx @biomejs/biome lint ./src",
-        "format": "npx @biomejs/biome format --write ./src",
-        "format:check": "npx @biomejs/biome format --write=false ./src"
+        "test": "echo No tests configured",
+        "dev": "dotenv --env-file=.env -- node src/index.js"
     },
     "keywords": [],
     "author": "",
