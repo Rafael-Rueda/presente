@@ -76,6 +76,42 @@ O sistema foi idealizado para resolver os desafios comuns no controle de presen�
 
 ---
 
+## 🔄 CI/CD
+
+O projeto possui integração contínua configurada com GitHub Actions, executando automaticamente em cada push ou pull request.
+
+### Pipeline de CI
+
+O workflow executa os seguintes checks:
+
+- ✅ **Build Matrix**: Testa em múltiplas versões do Node.js (18.x e 20.x)
+- ✅ **Instalação de Dependências**: Garante que todas as dependências são instaláveis
+- ✅ **Linting**: Verifica qualidade do código com Biome
+- ✅ **Formatação**: Valida formatação do código
+- ✅ **Startup Check**: Verifica se a aplicação inicia corretamente
+
+### Badges
+
+[![CI](https://github.com/Rafael-Rueda/presente/actions/workflows/ci.yml/badge.svg)](https://github.com/Rafael-Rueda/presente/actions/workflows/ci.yml)
+
+### Scripts de Qualidade de Código
+
+```bash
+# Verificar linting
+npm run lint
+
+# Verificar formatação
+npm run format:check
+
+# Formatar código automaticamente
+npm run format
+
+# Executar testes
+npm test
+```
+
+---
+
 ## 🚀 Tecnologias
 
 ### Backend
@@ -407,7 +443,7 @@ Este projeto está sob a licença MIT. Veja o arquivo `LICENSE` para mais detalh
 
 ## 👥 Autores
 
-- **Rafael Rueda, Renan Manancero, André Cícero** - *Desenvolvimento inicial* - [GitHub](https://github.com/rafael-rueda)
+- **Rafael Rueda, Renan Manancero, André Cícero** - *Desenvolvimento inicial* - [GitHub](https://github.com/rafael-rueda/presente)
 
 ---
 
